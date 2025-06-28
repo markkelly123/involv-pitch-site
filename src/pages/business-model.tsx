@@ -135,7 +135,7 @@ export default function BusinessModel() {
                 <strong>Customer Metrics:</strong>
               </p>
               <p className="text-gray-700 mb-4 pb-2 border-b border-gray-300">
-                • Customer Acquisition Cost (CAC): c.$3,000; Payback period: >1 month
+                • Customer Acquisition Cost (CAC): c.$3,000; Payback period: &gt;1 month
               </p>
               <p className="text-gray-700 mb-4 pb-2 border-b border-gray-300">
                 • Customer Lifetime Value (LTV): c.$150,000

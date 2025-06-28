@@ -1,100 +1,100 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
-// Footer component to replace all your existing footer sections
 export default function Footer() {
+  const pitchSections = [
+    { href: '/', label: 'Beginning' },
+    { href: '/problem', label: 'Problem' },
+    { href: '/solution', label: 'Solution' },
+    { href: '/market', label: 'Market' },
+    { href: '/business-model', label: 'Business Model' },
+    { href: '/traction', label: 'Traction' },
+    { href: '/competition', label: 'Competition' },
+    { href: '/go-to-market', label: 'Go-to-Market' },
+    { href: '/financials', label: 'Financials' },
+    { href: '/team', label: 'Team' },
+    { href: '/funding', label: 'Investment Ask' }
+  ]
+
   return (
-    <footer className="bg-white text-gray-700 py-12 px-4 border-t border-gray-200">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-5 gap-8">
+    <footer className="bg-gray-900 text-white py-12 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8">
+          
           {/* Company Info */}
-          <div className="md:col-span-2">
-            <div className="mb-4">
-              <a 
-                href="https://involv.com.au" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block hover:opacity-80 transition-opacity"
-              >
-                <img src="/logo-involv.svg" alt="Involv" className="h-6 w-auto" />
-              </a>
+          <div className="md:col-span-1">
+            <div className="mb-6">
+              <Image
+                src="/logo-involv-white.svg"
+                alt="Involv"
+                width={150}
+                height={50}
+                className="h-8 w-auto"
+              />
             </div>
-            <div className="text-gray-600 text-sm mb-6">
-              <p>Compliance made simple.</p>
-              <p>Gaming made smarter.</p>
-              <p>Built for Australian pubs and clubs.</p>
+            <div className="text-gray-300 text-sm mb-6 space-y-1">
+              <p>Compliance Made Simple.</p>
+              <p>Gaming Made Smarter.</p>
+              <p className="text-[#66899b] font-medium">Built for Pubs and Clubs.</p>
             </div>
             
-            {/* Social Media Links */}
-            <div className="flex space-x-4">
+            {/* Contact Info */}
+            <div className="text-gray-300 text-sm space-y-2">
+              <p>Investment Inquiries:</p>
               <a 
-                href="https://www.linkedin.com/company/involvgroup/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gray-100 p-2 rounded-lg hover:bg-[#1e40af] transition-colors group"
-                aria-label="Follow Involv on LinkedIn"
+                href="mailto:mark.kelly@involv.com.au" 
+                className="text-[#66899b] hover:text-white transition-colors"
               >
-                <i className="lni lni-linkedin text-2xl text-gray-600 group-hover:text-white"></i>
-              </a>
-              <a 
-                href="https://www.youtube.com/@InvolvGroup" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gray-100 p-2 rounded-lg hover:bg-[#1e40af] transition-colors group"
-                aria-label="Subscribe to Involv on YouTube"
-              >
-                <i className="lni lni-youtube text-2xl text-gray-600 group-hover:text-white"></i>
-              </a>
-              <a 
-                href="https://www.facebook.com/InvolvGroup" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gray-100 p-2 rounded-lg hover:bg-[#1e40af] transition-colors group"
-                aria-label="Follow Involv on Facebook"
-              >
-                <i className="lni lni-facebook text-2xl text-gray-600 group-hover:text-white"></i>
+                mark.kelly@involv.com.au
               </a>
             </div>
           </div>
           
-          {/* Services */}
-          <div>
-            <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li><Link href="/features" className="hover:text-[#1e40af] transition-colors">AML Advisory</Link></li>
-              <li><Link href="/features" className="hover:text-[#1e40af] transition-colors">Risk & Compliance</Link></li>
-              <li><Link href="/features" className="hover:text-[#1e40af] transition-colors">Gaming Performance</Link></li>
-            </ul>
-          </div>
-          
-          {/* Solutions */}
-          <div>
-            <h3 className="font-semibold mb-4">Solutions</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li><Link href="/features" className="hover:text-[#1e40af] transition-colors">Features</Link></li>
-              <li><Link href="/pricing" className="hover:text-[#1e40af] transition-colors">Pricing</Link></li>
-              <li><Link href="/case-studies" className="hover:text-[#1e40af] transition-colors">Case Studies</Link></li>
-              <li><Link href="/documentation" className="hover:text-[#1e40af] transition-colors">Documentation</Link></li>
-            </ul>
-          </div>
-          
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="https://involv.com.au/about" className="hover:text-[#1e40af] transition-colors">About Involv</a></li>
-              <li><Link href="/insights" className="hover:text-[#1e40af] transition-colors">Insights</Link></li>
-              <li><Link href="/faqs" className="hover:text-[#1e40af] transition-colors">FAQs</Link></li>
-              <li><Link href="/contact" className="hover:text-[#1e40af] transition-colors">Contact</Link></li>
-            </ul>
+          {/* Pitch Navigation - Split into 3 columns */}
+          <div className="md:col-span-3">
+            <h3 className="font-semibold mb-6 text-lg">Presentation Navigation</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pitchSections.map((section, index) => (
+                <Link
+                  key={section.href}
+                  href={section.href}
+                  className="flex items-center text-gray-300 hover:text-[#66899b] transition-colors duration-200 text-sm py-1"
+                >
+                  <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-xs font-medium mr-3 group-hover:bg-[#66899b]">
+                    {index + 1}
+                  </span>
+                  {section.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-300 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-          <p>&copy; 2025 Involv. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy-policy" className="hover:text-[#1e40af] transition-colors">Privacy Policy</Link>
-            <Link href="/terms-of-use" className="hover:text-[#1e40af] transition-colors">Terms of Use</Link>
-            <Link href="/disclaimer" className="hover:text-[#1e40af] transition-colors">Disclaimer</Link>
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+          <div className="flex items-center space-x-4">
+            <p>&copy; 2025 Involv Pty Ltd. All rights reserved.</p>
+            <span className="hidden md:inline">•</span>
+            <p className="text-xs">Confidential Investment Presentation</p>
+          </div>
+          
+          <div className="flex items-center space-x-6 mt-4 md:mt-0">
+            <a 
+              href="https://preview.involv.com.au?_vercel_share=P6IQohuopGuPbLsvPDzZmN2VWIIl2Udu" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-[#66899b] transition-colors"
+            >
+              Main Website
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/involvgroup/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-[#66899b] transition-colors"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>

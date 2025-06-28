@@ -1,341 +1,170 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Image from 'next/image'
-import { GetStaticProps } from 'next'
-import { sanity, getPosts } from '../../lib/sanity'
+import Link from 'next/link'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import ViewLink from '../components/ViewLink'
+import { SummaryView, DetailedView } from '../components/ViewSwitch'
 
-interface Post {
-  _id: string
-  title: string
-  slug: { current: string }
-  excerpt?: string
-  publishedAt: string
-  author: {
-    name: string
-    role?: string
-    image?: {
-      asset: {
-        url: string
-      }
-      alt?: string
-    }
-  }
-  mainImage?: {
-    asset: {
-      url: string
-    }
-    alt?: string
-  }
-  categories: Array<{
-    _id: string
-    title: string
-  }>
-  estimatedReadingTime?: number
-}
-
-interface HomePageProps {
-  posts: Post[]
-}
-
-export default function HomePage({ posts }: HomePageProps) {
+export default function Home() {
   return (
     <>
       <Head>
-        <title>Assure - GRC Platform for Australian Pubs & Clubs</title>
-        <meta name="description" content="Australia&apos;s only GRC platform built specifically for pubs and clubs operating EGMs. Streamline AML compliance, risk management, and regulatory reporting with Assure." />
-        <meta name="keywords" content="AML compliance, gaming compliance, risk management, GRC platform, Australian pubs, clubs, EGM compliance, gaming machines, AUSTRAC reporting" />
+        <title>Involv - Investment Pitch</title>
+        <meta name="description" content="Involv - Compliance Made Simple. Gaming Made Smarter. Built for Pubs and Clubs." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        {/* Open Graph */}
-        <meta property="og:title" content="Assure - GRC Platform for Australian Pubs & Clubs" />
-        <meta property="og:description" content="Australia&apos;s only GRC platform built specifically for pubs and clubs operating EGMs. Streamline AML compliance, risk management, and regulatory reporting." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://assure.involv.com.au" />
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Assure - GRC Platform for Australian Pubs & Clubs" />
-        <meta name="twitter:description" content="Australia&apos;s only GRC platform built specifically for pubs and clubs operating EGMs." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-white">
-        {/* Navigation Component */}
-        <Navigation />
+      <Navigation />
 
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 to-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                A risk and compliance team in your browser.
+      {/* Hero Section with Overlays */}
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/involv-hero.jpg"
+            alt="Pub and gaming venue interior"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+          {/* Tagline */}
+          <SummaryView>
+            <div className="mb-8 pt-24">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+                Compliance Made Simple.
+                <br />
+                Gaming Made Smarter.
+                <br />
+                <span className="text-[#66899b]">Built for Pubs and Clubs.</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Streamline your AML, gaming compliance, and risk management with Australia&apos;s only 
-                GRC platform built specifically for pubs and clubs operating EGMs.
+            </div>
+          </SummaryView>
+
+          {/* Detailed Executive Summary */}
+          <DetailedView>
+            <div className="mb-8 pt-24 text-left max-w-3xl mx-auto">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6">
+                Involv is a specialist advisory and regulatory technology company
+              </h1>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                ...with a comprehensive GRC and gaming optimisation platform serving Australia's $15 billion gaming industry.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link 
-                  href="/contact" 
-                  className="bg-[#1e40af] text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center"
-                >
-                  <i className="lni lni-rocket-6 mr-2"></i>
-                  Schedule a Demo
-                </Link>
-                <Link 
-                  href="/demo" 
-                  className="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors flex items-center"
-                >
-                  <i className="lni lni-play mr-2"></i>
-                  Watch Demo
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Everything you need for compliance
-              </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Purpose-built for Australian pubs and clubs, Assure simplifies complex risk & compliance requirements.
+              <h2 className="text-2xl font-bold text-white mb-4 mt-6">Executive Summary</h2>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                <strong>Situation:</strong> 300%+ increase in state level enforcement actions and penalties since 2021 (across AML, responsible gambling and licence breaches); 70% of venues report no dedicated compliance or analytics staff; 80% rely on manual spreadsheets for governance tasks (industry survey, 2024).
+              </p>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                <strong>The Opportunity:</strong> Pubs and clubs face increasing regulatory complexity, compliance costs, and pressure to optimise gaming performance whilst maintaining responsible gambling standards. They face significantly increased regulatory scrutiny and enforcement, while most venues remain under-resourced and poorly equipped to manage compliance effectively.
+              </p>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                <strong>Our Solution:</strong> Integrated advisory services, and supporting SaaS compliance platform (Assure), transaction monitoring software (Sentinel), safer gaming monitoring software (SafePlay), and EGM optimisation software (PrimeEdge).
+              </p>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                <strong>Market:</strong> 3,750+ licensed venues across Australia operating gaming machines. $1.5B+ annual spend on compliance, risk management, and gaming technology.
+              </p>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                <strong>Business Model:</strong> Recurring software subscription fees + high-margin implementation and consulting services.
+              </p>
+              <p className="text-white/80 mb-4 pb-2 border-b border-white/30">
+                <strong>Traction:</strong> 14 current clients, c. $2M current revenue. 1 client trialling GRC tool.
+              </p>
+              <p className="text-white/80 mb-4">
+                <strong>Funding Ask:</strong> $[X] million to accelerate growth and acquire technology that provides a significant competitive advantage, product development and market expansion.
               </p>
             </div>
+          </DetailedView>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Feature 1 - AML Compliance */}
-              <Link href="/features" className="text-center group cursor-pointer">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1e40af] transition-colors">
-                  <i className="lni lni-shield-1 text-3xl text-[#1e40af] group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e40af] transition-colors">AML Compliance</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
-                  Comprehensive AML tools designed for gaming venues ready for AUSTRAC reporting.
-                </p>
-              </Link>
-
-              {/* Feature 2 - Risk Management */}
-              <Link href="/features" className="text-center group cursor-pointer">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1e40af] transition-colors">
-                  <i className="lni lni-file-check text-3xl text-[#1e40af] group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e40af] transition-colors">Risk Management</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
-                  Automated risk assessments and monitoring with customisable frameworks for your venue&apos;s specific needs.
-                </p>
-              </Link>
-
-              {/* Feature 3 - Regulatory Reporting */}
-              <Link href="/features" className="text-center group cursor-pointer">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1e40af] transition-colors">
-                  <i className="lni lni-bar-chart-4 text-3xl text-[#1e40af] group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e40af] transition-colors">Regulatory Reporting</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
-                  Streamlined reporting for all Australian jurisdictions with automated compliance tracking and alerts.
-                </p>
-              </Link>
-
-              {/* Feature 4 - Team Management */}
-              <Link href="/features" className="text-center group cursor-pointer">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1e40af] transition-colors">
-                  <i className="lni lni-users text-3xl text-[#1e40af] group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e40af] transition-colors">Team Management</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
-                  Role-based access controls and training modules to ensure your entire team stays compliant.
-                </p>
-              </Link>
-
-              {/* Feature 5 - Real-time Monitoring */}
-              <Link href="/features" className="text-center group cursor-pointer">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1e40af] transition-colors">
-                  <i className="lni lni-timer-1 text-3xl text-[#1e40af] group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e40af] transition-colors">Real-time Monitoring</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
-                  24/7 compliance monitoring with instant alerts for regulatory changes.
-                </p>
-              </Link>
-
-              {/* Feature 6 - Custom Workflows */}
-              <Link href="/features" className="text-center group cursor-pointer">
-                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:bg-[#1e40af] transition-colors">
-                  <i className="lni lni-code-branch text-3xl text-[#1e40af] group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-[#1e40af] transition-colors">Custom Workflows</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
-                  Configurable compliance workflows that adapt to your venue&apos;s operational requirements and processes.
-                </p>
-              </Link>
+          {/* Product Logos Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mt-16">
+            {/* Assure */}
+            <div className="flex flex-col items-center space-y-4">
+              <Image
+                src="/logo-involv-assure-white2.svg"
+                alt="Involv Assure"
+                width={160}
+                height={60}
+                className="h-12 w-auto"
+              />
+              <p className="text-white text-sm font-medium">A compliance team in your browser.</p>
             </div>
 
-            {/* Explore Features CTA */}
-            <div className="text-center mt-12">
-              <Link 
-                href="/features" 
-                className="inline-flex items-center bg-gray-100 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
-              >
-                <i className="lni lni-cog mr-2"></i>
-                Explore all Features
-              </Link>
+            {/* Sentinel */}
+            <div className="flex flex-col items-center space-y-4">
+              <Image src="/logo-sentinel-white.png" alt="Sentinel" width={160} height={60} className="h-12 w-auto" />
+              <p className="text-white text-sm font-medium">Real-time transaction monitoring.</p>
+            </div>
+
+            {/* SafePlay */}
+            <div className="flex flex-col items-center space-y-4">
+              <Image src="/logo-safeplay-white.png" alt="SafePlay" width={160} height={60} className="h-12 w-auto" />
+              <p className="text-white text-sm font-medium">Real-time safer gaming monitoring.</p>
+            </div>
+
+            {/* PrimeEdge */}
+            <div className="flex flex-col items-center space-y-4">
+              <Image src="/logo-involv-primeedge-white2.svg" alt="Involv PrimeEdge" width={160} height={60} className="h-12 w-auto" />
+              <p className="text-white text-sm font-medium">The science behind high-performance gaming venues.</p>
             </div>
           </div>
-        </section>
 
-        {/* Benefits Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Built for Australian pubs and clubs
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  Unlike generic compliance tools, Assure understands the unique challenges facing 
-                  Australian gaming venues. We&apos;ve built every feature with your specific regulatory 
-                  requirements in mind.
-                </p>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <i className="lni lni-check-circle-1 text-2xl text-green-500 mt-1"></i>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900">Australian-first design</h3>
-                      <p className="text-gray-600">
-                        Pre-configured for AUSTRAC, state gaming regulations, and local compliance requirements.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <i className="lni lni-check-circle-1 text-2xl text-green-500 mt-1"></i>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900">Expert support</h3>
-                      <p className="text-gray-600">
-                        Backed by Australia&apos;s leading gaming compliance consultants with decades of experience.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <i className="lni lni-check-circle-1 text-2xl text-green-500 mt-1"></i>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900">Venue-focused features</h3>
-                      <p className="text-gray-600">
-                        Purpose-built for gaming floors, not generic business compliance needs.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Subtle CTA in benefits section */}
-                <div className="mt-8">
-                  <Link 
-                    href="/features" 
-                    className="inline-flex items-center text-[#1e40af] font-medium hover:text-blue-700 transition-colors text-lg"
-                  >
-                    See how it works
-                    <i className="lni lni-arrow-right text-xl ml-1"></i>
-                  </Link>
-                </div>
+          {/* Executive Summary Stats */}
+          <SummaryView>
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-white mb-2">300%+</div>
+                <div className="text-sm text-gray-200">Increase in enforcement actions since 2021</div>
               </div>
-
-              <div className="relative">
-                <div className="bg-white rounded-2xl shadow-xl p-8">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <i className="lni lni-alarm-check text-4xl text-green-600"></i>
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Save 20+ hours per week</h3>
-                    <p className="text-gray-600 mb-6">
-                      Automate manual compliance tasks and reduce the time spent on regulatory reporting.
-                    </p>
-                    <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                      <div className="flex items-center">
-                        <i className="lni lni-users mr-1"></i>
-                        <span>Dozens of venues</span>
-                      </div>
-                      <div className="flex items-center">
-                        <i className="lni lni-star-fat mr-1 text-yellow-400"></i>
-                        <span>4.9/5 rating</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-white mb-2">$1.5B+</div>
+                <div className="text-sm text-gray-200">Annual compliance & tech spend</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-white mb-2">3,750+</div>
+                <div className="text-sm text-gray-200">Licensed gaming venues</div>
               </div>
             </div>
-          </div>
-        </section>
+          </SummaryView>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-[#1e40af]">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Nail your compliance and risk management
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Join the Australian venues using Assure to stay compliant and save time.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact" 
-                className="bg-white text-[#1e40af] px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center"
-              >
-                <i className="lni lni-envelope-2 mr-2"></i>
-                Schedule a Demo
-              </Link>
-              <Link 
-                href="/pricing" 
-                className="border border-blue-300 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center"
-              >
-                <i className="lni lni-tap-quick mr-2"></i>
-                View Pricing
-              </Link>
+          {/* Navigation to Next Section */}
+          <div className="mt-16">
+            <div className="relative inline-block">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#66899b] to-[#5a7a8a] rounded-lg blur opacity-60 animate-pulse"></div>
+              <div className="absolute -inset-2 bg-[#66899b] rounded-lg opacity-20 animate-ping"></div>
+              <SummaryView>
+                <Link
+                  href="/problem"
+                  className="relative inline-flex items-center px-8 py-4 bg-[#66899b] text-white font-semibold rounded-lg hover:bg-[#5a7a8a] transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg"
+                >
+                  Begin Presentation
+                  <svg className="ml-2 w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </SummaryView>
+              <DetailedView>
+                <ViewLink
+                  href="/problem"
+                  className="relative inline-flex items-center px-8 py-4 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-all duration-300"
+                >
+                  Deep-dive: Problem Statement
+                </ViewLink>
+              </DetailedView>
             </div>
+            <p className="text-white/80 text-sm mt-4 animate-pulse">Click to explore our investment opportunity</p>
           </div>
-        </section>
-
-        {/* Footer Component */}
-        <Footer />
+        </div>
       </div>
+
+      <Footer />
     </>
   )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    // Use the existing getPosts function from your sanity.ts file
-    const posts = await getPosts('assure', 3)
-
-    return {
-      props: {
-        posts: posts || []
-      },
-      revalidate: 300
-    }
-  } catch (error) {
-    console.error('Error fetching posts:', error)
-    return {
-      props: {
-        posts: []
-      },
-      revalidate: 300
-    }
-  }
 }

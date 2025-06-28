@@ -1,89 +1,201 @@
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import Image from 'next/image'
 
-interface NavigationProps {
-  currentPath?: string
+type NavigationItem = {
+  label: string
+  href?: string
+  items?: { label: string; href: string }[]
 }
 
-export default function Navigation({ currentPath = '' }: NavigationProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [currentView, setCurrentView] = useState<'summary' | 'detailed'>('summary')
+  const router = useRouter()
 
-  const isActiveLink = (href: string) => {
-    if (href === '/' && currentPath === '/') return true
-    if (href !== '/' && currentPath.startsWith(href)) return true
-    return false
+  // Initialize view from URL parameter
+  useEffect(() => {
+    const view = router.query.view as string
+    setCurrentView(view === 'detailed' ? 'detailed' : 'summary')
+  }, [router.query.view])
+
+  const handleViewToggle = (view: 'summary' | 'detailed') => {
+    setCurrentView(view)
+    const newQuery = { ...router.query }
+    if (view === 'detailed') {
+      newQuery.view = 'detailed'
+    } else {
+      delete newQuery.view
+    }
+    
+    router.push({
+      pathname: router.pathname,
+      query: newQuery
+    }, undefined, { shallow: true })
   }
 
-  const getLinkClasses = (href: string, isDropdownItem = false) => {
-    const baseClasses = isDropdownItem 
-      ? "block px-4 py-2 text-sm hover:bg-gray-100 rounded transition-colors"
-      : "hover:text-[#1e40af] transition-colors"
-    
-    const activeClasses = isActiveLink(href) 
-      ? isDropdownItem 
-        ? "text-[#1e40af] bg-gray-100" 
-        : "text-[#1e40af] font-medium"
-      : isDropdownItem 
-        ? "text-gray-700 hover:text-[#1e40af]" 
-        : "text-gray-700"
-    
-    return `${baseClasses} ${activeClasses}`
+  const navigationItems: NavigationItem[] = [
+    {
+      label: 'Business',
+      items: [
+        { label: 'Problem', href: '/problem' },
+        { label: 'Solution', href: '/solution' },
+        { label: 'Market', href: '/market' }
+      ]
+    },
+    {
+      label: 'Strategy',
+      items: [
+        { label: 'Business Model', href: '/business-model' },
+        { label: 'Competition', href: '/competition' },
+        { label: 'Go-to-Market', href: '/go-to-market' }
+      ]
+    },
+    {
+      label: 'Performance',
+      items: [
+        { label: 'Traction', href: '/traction' },
+        { label: 'Financials', href: '/financials' }
+      ]
+    },
+    {
+      label: 'Investment',
+      items: [
+        { label: 'Team', href: '/team' },
+        { label: 'Funding', href: '/funding' }
+      ]
+    }
+  ]
+
+  const toggleDropdown = (label: string) => {
+    setOpenDropdown(openDropdown === label ? null : label)
+  }
+
+  const closeDropdowns = () => {
+    setOpenDropdown(null)
   }
 
   return (
-    <>
-      {/* Header */}
-      <header className="bg-white text-gray-700 border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative">
-          <Link href="/" className="flex items-center">
-            <img src="/logo-involv-assure2.svg" alt="Involv Assure" className="h-6 w-auto" />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo - Links to Hero section */}
+          <Link href="/" className="flex-shrink-0">
+            <Image
+              src="/logo-involv.svg"
+              alt="Involv"
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 text-sm space-x-8">
-            {/* Features */}
-            <Link href="/features" className={getLinkClasses('/features')}>
-              Features
-            </Link>
-
-            {/* Case Studies */}
-            <Link href="/case-studies" className={getLinkClasses('/case-studies')}>
-              Case Studies
-            </Link>
-
-            {/* Pricing */}
-            <Link href="/pricing" className={getLinkClasses('/pricing')}>
-              Pricing
-            </Link>
-
-            {/* Insights */}
-            <Link href="/insights" className={getLinkClasses('/insights')}>
-              Insights
-            </Link>
-
-          </nav>
-
-          {/* Right Side - About, Contact and Login */}
-          <div className="flex items-center text-sm">
-            <div className="hidden lg:flex space-x-6">
-              <Link href="/about" className={getLinkClasses('/about')}>
-                About
-              </Link>
-              <Link href="/contact" className={getLinkClasses('/contact')}>
-                Contact
-              </Link>
+          {/* Desktop Navigation - Flex container for center alignment */}
+          <div className="hidden md:flex items-center flex-1">
+            {/* View Toggle Buttons - Centered */}
+            <div className="flex-1 flex justify-center">
+              <div className="flex items-center bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => handleViewToggle('summary')}
+                  className={`px-4 py-2 text-xs font-medium rounded-md transition-all duration-200 ${
+                    currentView === 'summary'
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'bg-transparent text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  INVESTOR VIEW
+                </button>
+                <button
+                  onClick={() => handleViewToggle('detailed')}
+                  className={`px-4 py-2 text-xs font-medium rounded-md transition-all duration-200 ${
+                    currentView === 'detailed'
+                      ? 'bg-emerald-600 text-white shadow-sm'
+                      : 'bg-transparent text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  DETAILED CONTENT
+                </button>
+              </div>
             </div>
-            <Link href="/login" className="ml-[60px] text-sm font-medium bg-[#1e40af] text-white px-4 py-1.5 rounded hover:bg-blue-700 transition">
-              Login
-            </Link>
 
-            {/* Mobile Menu Button */}
+            {/* Dropdown Menus - All navigation items including Business */}
+            <div className="flex items-center space-x-1">
+              {navigationItems.map((item) => (
+                item.href ? (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                      router.pathname === item.href
+                        ? 'text-[#66899b] bg-gray-100'
+                        : 'text-gray-700 hover:text-[#66899b] hover:bg-gray-50'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <div key={item.label} className="relative">
+                    <button
+                      onClick={() => toggleDropdown(item.label)}
+                      className={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                        item.items?.some(subItem => router.pathname === subItem.href)
+                          ? 'text-[#66899b] bg-gray-100'
+                          : 'text-gray-700 hover:text-[#66899b] hover:bg-gray-50'
+                      }`}
+                    >
+                      {item.label}
+                      <svg
+                        className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                          openDropdown === item.label ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {openDropdown === item.label && (
+                      <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1">
+                        {item.items?.map((subItem) => (
+                          <Link
+                            key={subItem.href}
+                            href={subItem.href}
+                            onClick={closeDropdowns}
+                            className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                              router.pathname === subItem.href
+                                ? 'text-[#66899b] bg-gray-100'
+                                : 'text-gray-700 hover:text-[#66899b] hover:bg-gray-50'
+                            }`}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden ml-4 p-2 rounded-md hover:bg-gray-100 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#66899b] hover:bg-gray-100"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileMenuOpen ? (
+              <svg
+                className="h-6 w-6"
+                stroke="currentColor"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                {isMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -93,53 +205,106 @@ export default function Navigation({ currentPath = '' }: NavigationProps) {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
-            <div className="px-4 py-4 space-y-2">
-              {/* Features */}
-              <Link href="/features" className={`block py-2 ${getLinkClasses('/features')}`}>
-                Features
-              </Link>
-
-              {/* Case Studies */}
-              <Link href="/case-studies" className={`block py-2 ${getLinkClasses('/case-studies')}`}>
-                Case Studies
-              </Link>
-
-              {/* Pricing */}
-              <Link href="/pricing" className={`block py-2 ${getLinkClasses('/pricing')}`}>
-                Pricing
-              </Link>
-
-              {/* Insights */}
-              <Link href="/insights" className={`block py-2 ${getLinkClasses('/insights')}`}>
-                Insights
-              </Link>
-
-              {/* Documentation */}
-              <Link href="/documentation" className={`block py-2 ${getLinkClasses('/documentation')}`}>
-                Documentation
-              </Link>
-
-              {/* FAQs */}
-              <Link href="/faqs" className={`block py-2 ${getLinkClasses('/faqs')}`}>
-                FAQs
-              </Link>
-
-              {/* About */}
-              <Link href="/about" className={`block py-2 ${getLinkClasses('/about')}`}>
-                About
-              </Link>
-
-              {/* Contact */}
-              <Link href="/contact" className={`block py-2 ${getLinkClasses('/contact')}`}>
-                Contact
-              </Link>
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 py-2">
+            {/* Mobile View Toggle */}
+            <div className="px-3 py-2">
+              <div className="text-xs font-medium text-gray-500 mb-2">VIEW MODE</div>
+              <div className="flex bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => handleViewToggle('summary')}
+                  className={`flex-1 px-3 py-2 text-xs font-medium rounded-md transition-all duration-200 ${
+                    currentView === 'summary'
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'bg-transparent text-gray-600'
+                  }`}
+                >
+                  INVESTOR VIEW
+                </button>
+                <button
+                  onClick={() => handleViewToggle('detailed')}
+                  className={`flex-1 px-3 py-2 text-xs font-medium rounded-md transition-all duration-200 ${
+                    currentView === 'detailed'
+                      ? 'bg-emerald-600 text-white shadow-sm'
+                      : 'bg-transparent text-gray-600'
+                  }`}
+                >
+                  DETAILED CONTENT
+                </button>
+              </div>
             </div>
+
+            {/* Mobile Menu Items - All navigation items */}
+            {navigationItems.map((item) => (
+              item.href ? (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
+                    router.pathname === item.href
+                      ? 'text-[#66899b] bg-gray-100'
+                      : 'text-gray-700 hover:text-[#66899b] hover:bg-gray-50'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <div key={item.label}>
+                  <button
+                    onClick={() => toggleDropdown(item.label)}
+                    className="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-[#66899b] hover:bg-gray-50 rounded-md"
+                  >
+                    {item.label}
+                    <svg
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        openDropdown === item.label ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {openDropdown === item.label && (
+                    <div className="pl-6 space-y-1">
+                      {item.items?.map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          href={subItem.href}
+                          onClick={() => {
+                            setIsMenuOpen(false)
+                            closeDropdowns()
+                          }}
+                          className={`block px-3 py-2 text-sm rounded-md transition-colors duration-200 ${
+                            router.pathname === subItem.href
+                              ? 'text-[#66899b] bg-gray-100'
+                              : 'text-gray-600 hover:text-[#66899b] hover:bg-gray-50'
+                          }`}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            ))}
           </div>
         )}
-      </header>
-    </>
+      </div>
+    </nav>
   )
+}
+
+export default Navigation
+
+// Helper hook for other components to check current view
+export const useViewMode = () => {
+  const router = useRouter()
+  const view = router.query.view as string
+  return view === 'detailed' ? 'detailed' : 'summary'
 }

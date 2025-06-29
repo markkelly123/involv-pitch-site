@@ -94,8 +94,32 @@ const Navigation = () => {
 
           {/* Desktop Navigation - Flex container for center alignment */}
           <div className="hidden md:flex items-center flex-1">
-            {/* View Toggle Buttons - Centered */}
-            <div className="flex-1 flex justify-center">
+            {/* View Toggle Buttons with Download Button - Centered */}
+            <div className="flex-1 flex justify-center items-center space-x-3">
+              {/* Download Button */}
+              <a
+                href="/2506-involv-investor-pitch-deck.pdf"
+                download="Involv-Investor-Pitch-Deck.pdf"
+                className="flex items-center justify-center w-10 h-10 bg-white hover:bg-gray-50 text-blue-600 border border-gray-200 hover:border-blue-300 rounded-lg transition-colors duration-200 group"
+                title="Download Investor Pitch Deck (PDF)"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </a>
+
+              {/* View Toggle Buttons */}
               <div className="flex items-center bg-gray-100 rounded-lg p-1">
                 <button
                   onClick={() => handleViewToggle('summary')}
@@ -208,6 +232,31 @@ const Navigation = () => {
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-2">
+            {/* Mobile Download Button */}
+            <div className="px-3 py-2">
+              <a
+                href="/2506-involv-investor-pitch-deck.pdf"
+                download="Involv-Investor-Pitch-Deck.pdf"
+                className="flex items-center justify-center w-full px-4 py-3 bg-white hover:bg-gray-50 text-blue-600 border border-gray-200 hover:border-blue-300 rounded-lg transition-colors duration-200 mb-3"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                Download Pitch Deck
+              </a>
+            </div>
+
             {/* Mobile View Toggle */}
             <div className="px-3 py-2">
               <div className="text-xs font-medium text-gray-500 mb-2">VIEW MODE</div>

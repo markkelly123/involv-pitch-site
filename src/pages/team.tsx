@@ -104,7 +104,7 @@ export default function Team() {
               </div>
               <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white text-center">
                 <div className="text-3xl font-bold mb-2">13,000+</div>
-                <div className="text-sm opacity-90">EGMs Managed (Con)</div>
+                <div className="text-sm opacity-90">EGMs Managed</div>
               </div>
               <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white text-center">
                 <div className="text-3xl font-bold mb-2">100%</div>

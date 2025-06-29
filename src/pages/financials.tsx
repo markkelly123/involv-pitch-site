@@ -3,8 +3,96 @@ import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import PitchNavigation from '../components/PitchNavigation'
 import { SummaryView, DetailedView } from '../components/ViewSwitch'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 export default function Financials() {
+  // Revenue data for the chart
+  const revenueData = [
+    {
+      year: 'Year 1',
+      'Consulting': 1.1,
+      'Assure GRC': 0.047,
+      'Sentinel TM': 0.774,
+      'SafePlay': 0.165,
+      'PrimeEdge': 0.242,
+      total: 2.3
+    },
+    {
+      year: 'Year 2',
+      'Consulting': 2.5,
+      'Assure GRC': 0.216,
+      'Sentinel TM': 2.8,
+      'SafePlay': 0.751,
+      'PrimeEdge': 1.1,
+      total: 7.3
+    },
+    {
+      year: 'Year 3',
+      'Consulting': 3.7,
+      'Assure GRC': 0.521,
+      'Sentinel TM': 5.4,
+      'SafePlay': 1.5,
+      'PrimeEdge': 2.3,
+      total: 13.5
+    },
+    {
+      year: 'Year 4',
+      'Consulting': 4.6,
+      'Assure GRC': 0.86,
+      'Sentinel TM': 8.1,
+      'SafePlay': 2.3,
+      'PrimeEdge': 3.6,
+      total: 19.4
+    },
+    {
+      year: 'Year 5',
+      'Consulting': 5.4,
+      'Assure GRC': 1.2,
+      'Sentinel TM': 10.6,
+      'SafePlay': 3.1,
+      'PrimeEdge': 4.8,
+      total: 25.1
+    }
+  ]
+
+  // Custom color palette based on your brand
+  const colors = {
+    'Consulting': '#66899b',        // Your primary brand color
+    'Assure GRC': '#4f73a8',       // Deep blue
+    'Sentinel TM': '#e74c3c',      // Red (matching your table)
+    'SafePlay': '#2ecc71',         // Green (matching your table)
+    'PrimeEdge': '#9b59b6'         // Purple (matching your table)
+  }
+
+  // Custom tooltip formatter
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      const total = payload.reduce((sum: number, entry: any) => sum + entry.value, 0)
+      
+      return (
+        <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
+          <p className="font-semibold text-gray-900 mb-2">{label}</p>
+          {payload.map((entry: any) => (
+            <p key={entry.dataKey} className="text-sm mb-1" style={{ color: entry.color }}>
+              <span className="font-medium">{entry.dataKey}:</span> ${entry.value.toFixed(entry.value < 1 ? 2 : 1)}M
+            </p>
+          ))}
+          <div className="border-t pt-2 mt-2">
+            <p className="font-bold text-gray-900">
+              Total Revenue: ${total.toFixed(1)}M
+            </p>
+          </div>
+        </div>
+      )
+    }
+    return null
+  }
+
+  // Custom legend formatter
+  const renderLegend = (value: string, entry: any) => {
+    return <span style={{ color: entry.color, fontWeight: 500 }}>{value}</span>
+  }
+
   return (
     <>
       <Head>
@@ -105,6 +193,95 @@ export default function Financials() {
               <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white text-center">
                 <div className="text-3xl font-bold mb-2">Year 2</div>
                 <div className="text-sm opacity-90">EBITDA & Cash Flow Positive</div>
+              </div>
+            </div>
+          </SummaryView>
+
+          {/* Revenue Projection Chart */}
+          <SummaryView>
+            <div className="mb-20">
+              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+                <div className="mb-6">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Revenue Growth Trajectory</h2>
+                  <p className="text-gray-600 text-center">5-year projection showing path to $25.1M across all service lines</p>
+                </div>
+                
+                <div className="h-96">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={revenueData}
+                      margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                      barCategoryGap="20%"
+                    >
+                      <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                      <XAxis 
+                        dataKey="year" 
+                        tick={{ fontSize: 12, fill: '#64748b' }}
+                        axisLine={{ stroke: '#e2e8f0' }}
+                      />
+                      <YAxis 
+                        tick={{ fontSize: 12, fill: '#64748b' }}
+                        axisLine={{ stroke: '#e2e8f0' }}
+                        label={{ 
+                          value: 'Revenue ($M)', 
+                          angle: -90, 
+                          position: 'insideLeft',
+                          style: { textAnchor: 'middle', fill: '#64748b' }
+                        }}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend 
+                        formatter={renderLegend}
+                        wrapperStyle={{ paddingTop: '20px' }}
+                      />
+                      
+                      {/* Stacked bars for each revenue stream */}
+                      <Bar 
+                        dataKey="Consulting" 
+                        stackId="revenue" 
+                        fill={colors['Consulting']}
+                        radius={[0, 0, 0, 0]}
+                      />
+                      <Bar 
+                        dataKey="Sentinel TM" 
+                        stackId="revenue" 
+                        fill={colors['Sentinel TM']}
+                      />
+                      <Bar 
+                        dataKey="PrimeEdge" 
+                        stackId="revenue" 
+                        fill={colors['PrimeEdge']}
+                      />
+                      <Bar 
+                        dataKey="SafePlay" 
+                        stackId="revenue" 
+                        fill={colors['SafePlay']}
+                      />
+                      <Bar 
+                        dataKey="Assure GRC" 
+                        stackId="revenue" 
+                        fill={colors['Assure GRC']}
+                        radius={[4, 4, 0, 0]}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                
+                {/* Key insights below chart */}
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-200">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#66899b] mb-1">10.9x</div>
+                    <div className="text-sm text-gray-600">Total Revenue Growth</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#e74c3c] mb-1">42%</div>
+                    <div className="text-sm text-gray-600">Sentinel TM Share (Year 5)</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#2ecc71] mb-1">74%</div>
+                    <div className="text-sm text-gray-600">SaaS Revenue Mix (Year 5)</div>
+                  </div>
+                </div>
               </div>
             </div>
           </SummaryView>

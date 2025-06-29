@@ -121,7 +121,7 @@ export default function GoToMarket() {
                 • 65 venue contracts (20 advisory-first, 45 software-first direct and via partners)
               </p>
               <p className="text-gray-700 mb-4 pb-2 border-b border-gray-300">
-                • Average CAC &lt;$6K (50% below industry benchmarks via warm introductions)
+                • Average CAC &lt;$3K (50% below industry benchmarks via warm introductions)
               </p>
               <p className="text-gray-700 mb-4">
                 • 60% advisory client conversion to SaaS modules within 12 months
@@ -157,7 +157,7 @@ export default function GoToMarket() {
                     <span className="text-lg font-bold">3</span>
                   </div>
                   <div className="text-sm font-medium">Channel Partners</div>
-                  <div className="text-xs opacity-80 mt-1">AusComply & Sint integration</div>
+                  <div className="text-xs opacity-80 mt-1">AusComply & Sint channel partnership and integration</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
                   <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -197,7 +197,7 @@ export default function GoToMarket() {
                     <div className="space-y-4">
                       <div className="bg-blue-50 rounded-lg p-4">
                         <div className="font-medium text-blue-900 mb-2">30 Years Industry Experience</div>
-                        <div className="text-sm text-blue-800">ALH Group, AWC, Mathieson Group leadership positions managing 13,000+ EGMs</div>
+                        <div className="text-sm text-blue-800">Currently consults for AVC, Mathieson Pub Group, and others after 29 years leading ALH Group gaming - managing 13,000+ EGMs</div>
                       </div>
                       
                       <div className="bg-green-50 rounded-lg p-4">
@@ -212,7 +212,7 @@ export default function GoToMarket() {
 
                       <div className="bg-orange-50 rounded-lg p-4">
                         <div className="font-medium text-orange-900 mb-2">Extended Founder Networks</div>
-                        <div className="text-sm text-orange-800">Tim, Louise & Mark activate extensive venue and supplier networks across all states</div>
+                        <div className="text-sm text-orange-800">Tim, Louise & Mark all activate extensive venue and supplier networks across all states</div>
                       </div>
                     </div>
                   </div>
@@ -248,7 +248,7 @@ export default function GoToMarket() {
                         <div className="text-xs opacity-90">CAC vs industry average</div>
                       </div>
                       <div className="p-4 bg-green-600 rounded-lg text-white text-center">
-                        <div className="text-lg font-bold mb-1">&lt;$6K</div>
+                        <div className="text-lg font-bold mb-1">&lt;$3K</div>
                         <div className="text-xs opacity-90">Average CAC target</div>
                       </div>
                     </div>
@@ -476,6 +476,10 @@ export default function GoToMarket() {
                         <div className="text-sm font-medium text-purple-900">Gaming Performance Advisory</div>
                         <div className="text-xs text-purple-700 mt-1">Separate but parallel revenue stream</div>
                       </div>
+                      <div className="bg-green-50 rounded-lg p-3">
+                        <div className="text-sm font-medium text-green-900">Assure GRC Platform</div>
+                        <div className="text-xs text-green-700 mt-1">Smaller operators self-serve via online subscription</div>
+                      </div>
                     </div>
                   </div>
                   
@@ -549,7 +553,7 @@ export default function GoToMarket() {
                 </div>
                 
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                  <div className="text-4xl font-bold mb-3">&lt;$6K</div>
+                  <div className="text-4xl font-bold mb-3">&lt;$3K</div>
                   <div className="text-lg mb-2">Average CAC</div>
                   <div className="text-sm opacity-80">50% below industry via warm introductions</div>
                 </div>

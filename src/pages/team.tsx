@@ -334,9 +334,9 @@ export default function Team() {
                           <div className="bg-indigo-50 rounded-lg p-4">
                             <div className="font-medium text-indigo-900 mb-2">Market Experience</div>
                             <ul className="text-sm text-indigo-800 space-y-1">
-                              <li>• Australian hospitality sector</li>
-                              <li>• International gaming markets</li>
-                              <li>• Safer gaming implementation</li>
+                              <li>• Two decades of hospitality sector expertise</li>
+                              <li>• International gaming management</li>
+                              <li>• Former COO Crown Melbourne</li>
                               <li>• Regulatory compliance</li>
                             </ul>
                           </div>
@@ -382,8 +382,8 @@ export default function Team() {
                             <div className="font-medium text-red-900 mb-2">Industry Leadership</div>
                             <ul className="text-sm text-red-800 space-y-1">
                               <li>• ALH Group (13,000 EGMs)</li>
-                              <li>• AWC gaming operations</li>
-                              <li>• Mathieson Group experience</li>
+                              <li>• AVC gaming performance optimisation</li>
+                              <li>• Consultant to Mathieson Pub Group </li>
                               <li>• 30-year track record</li>
                             </ul>
                           </div>

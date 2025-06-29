@@ -204,7 +204,7 @@ export default function BusinessModel() {
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Independent assessments
+                      Independent reviews
                     </li>
                   </ul>
                   <div className="mt-6 pt-6 border-t border-gray-200">
@@ -219,7 +219,7 @@ export default function BusinessModel() {
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Ongoing Retainers</h3>
                     <div className="text-3xl font-bold text-[#66899b] mb-1">$7.5K - $10K</div>
-                    <div className="text-sm text-gray-600">Per month</div>
+                    <div className="text-sm text-gray-600">Per annum</div>
                   </div>
                   <ul className="space-y-3 text-gray-600 text-sm">
                     <li className="flex items-start">
@@ -265,7 +265,7 @@ export default function BusinessModel() {
                   </ul>
                   <div className="mt-6 pt-6 border-t border-gray-200">
                     <div className="text-center">
-                      <div className="text-lg font-bold text-green-600">70%</div>
+                      <div className="text-lg font-bold text-green-600">80%</div>
                       <div className="text-xs text-gray-500">Gross Margin</div>
                     </div>
                   </div>

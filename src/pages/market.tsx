@@ -129,7 +129,7 @@ export default function Market() {
               </div>
               <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-8 text-white text-center">
                 <div className="text-4xl font-bold mb-3">$25M</div>
-                <div className="text-lg font-medium mb-2">5-Year Target (SOM)</div>
+                <div className="text-lg font-medium mb-2">5th Year Revenue Target</div>
                 <div className="text-sm opacity-90">6% market penetration</div>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function Market() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m0 0H5m4 0V9a2 2 0 011-1h4a2 2 0 011 1v12m-6 0h6m0 0v-9" />
                     </svg>
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-1">3,750+</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">c. 3,750+</div>
                   <div className="text-sm text-gray-600">Licensed gaming venues</div>
                 </div>
 
@@ -157,7 +157,7 @@ export default function Market() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-1">2,500</div>
+                  <div className="text-2xl font-bold text-gray-900 mb-1">c. 2,500</div>
                   <div className="text-sm text-gray-600">Unique venue owners</div>
                 </div>
 
@@ -178,7 +178,7 @@ export default function Market() {
                     </svg>
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-1">$50,000</div>
-                  <div className="text-sm text-gray-600">Average compliance spend per venue</div>
+                  <div className="text-sm text-gray-600">Avg ann. compliance spend per venue</div>
                 </div>
               </div>
             </div>
@@ -243,7 +243,7 @@ export default function Market() {
           {/* State Breakdown */}
           <SummaryView>
             <div className="bg-white rounded-2xl shadow-lg p-8 mb-20 border border-gray-200">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Market Distribution by State - Number of Gaming Venues</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Market Distribution by State (Number of Gaming Venues)</h2>
               
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
@@ -305,7 +305,7 @@ export default function Market() {
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                   <div className="text-4xl font-bold mb-3">$25M</div>
                   <div className="text-lg mb-2">Target annual revenue</div>
-                  <div className="text-sm opacity-80">Year 5 serviceable obtainable market</div>
+                  <div className="text-sm opacity-80">72% ARR</div>
                 </div>
               </div>
             </div>
@@ -324,7 +324,7 @@ export default function Market() {
                   className="mx-auto max-w-full h-auto"
                 />
                 <p className="text-gray-600 text-sm mt-4">
-                  Trusted by leading industry associations and regulatory bodies across Australia
+                  Leading industry associations across Australia
                 </p>
               </div>
             </div>

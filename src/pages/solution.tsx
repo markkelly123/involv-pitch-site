@@ -138,9 +138,9 @@ export default function Solution() {
           {/* Value Proposition */}
           <SummaryView>
             <div className="bg-gradient-to-r from-[#66899b] to-[#5a7a8a] rounded-2xl p-8 mb-16 text-white text-center">
-              <h2 className="text-3xl font-bold mb-4">Advisory Services + Software Platform</h2>
+              <h2 className="text-3xl font-bold mb-4">Advisory Services + Software Solutions</h2>
               <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                End-to-end platform combining expert advisory with purpose-built technology for Australian pubs and clubs
+                An end-to-end platform combining expert advisory with purpose-built technology for Australian pubs and clubs
               </p>
             </div>
           </SummaryView>
@@ -175,7 +175,7 @@ export default function Solution() {
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Regulator liaison and readiness
+                      Monitoring framework & regulator readiness
                     </li>
                   </ul>
                 </div>
@@ -193,15 +193,15 @@ export default function Solution() {
                   <ul className="space-y-3 text-gray-600">
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Control design and testing
+                      Holistic obligation mapping and control design
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Risk management tailored to venue realities
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       Full-cycle GRC implementations
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Tailored to venue realities
                     </li>
                   </ul>
                 </div>
@@ -239,8 +239,8 @@ export default function Solution() {
           <SummaryView>
             <div className="mb-20">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Software Platform</h2>
-                <p className="text-lg text-gray-600">Purpose-built SaaS solutions for gaming venue operations</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Software Solutions</h2>
+                <p className="text-lg text-gray-600">Purpose-built SaaS solutions purpose-built for gaming venue operators</p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -256,7 +256,7 @@ export default function Solution() {
                     />
                     <span className="ml-4 text-sm text-blue-600 font-medium">GRC Platform</span>
                   </div>
-                  <p className="text-blue-800 font-medium mb-4">A compliance team in your browser</p>
+                  <p className="text-blue-800 font-medium mb-4">A compliance team in your browser.</p>
                   <ul className="space-y-2 text-blue-700 text-sm">
                     <li>• Comprehensive obligations register</li>
                     <li>• Real-time regulatory updates</li>
@@ -277,7 +277,7 @@ export default function Solution() {
                     />
                     <span className="ml-4 text-sm text-red-600 font-medium">Transaction Monitoring</span>
                   </div>
-                  <p className="text-red-800 font-medium mb-4">Real-time transaction monitoring</p>
+                  <p className="text-red-800 font-medium mb-4">Real-time transaction monitoring.</p>
                   <ul className="space-y-2 text-red-700 text-sm">
                     <li>• Automated AML monitoring engine</li>
                     <li>• Custom rules development</li>
@@ -298,7 +298,7 @@ export default function Solution() {
                     />
                     <span className="ml-4 text-sm text-green-600 font-medium">Safer Gaming</span>
                   </div>
-                  <p className="text-green-800 font-medium mb-4">Real-time safer gaming monitoring</p>
+                  <p className="text-green-800 font-medium mb-4">Real-time safer gaming monitoring.</p>
                   <ul className="space-y-2 text-green-700 text-sm">
                     <li>• Behavioural analytics platform</li>
                     <li>• Advanced harm detection algorithms</li>
@@ -319,7 +319,7 @@ export default function Solution() {
                     />
                     <span className="ml-4 text-sm text-purple-600 font-medium">Gaming Optimisation</span>
                   </div>
-                  <p className="text-purple-800 font-medium mb-4">The science behind high-performance gaming venues</p>
+                  <p className="text-purple-800 font-medium mb-4">The science behind high-performance gaming venues.</p>
                   <ul className="space-y-2 text-purple-700 text-sm">
                     <li>• AI-powered EGM optimisation</li>
                     <li>• Revenue maximisation analytics</li>

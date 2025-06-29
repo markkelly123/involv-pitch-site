@@ -94,15 +94,15 @@ export default function Problem() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
               <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-xl p-6 text-white text-center">
                 <div className="text-3xl font-bold mb-2">300%+</div>
-                <div className="text-sm opacity-90">Increase in enforcement actions since 2021</div>
+                <div className="text-sm opacity-90">increase in regulatory enforcement actions since 2021</div>
               </div>
               <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-6 text-white text-center">
                 <div className="text-3xl font-bold mb-2">70%</div>
-                <div className="text-sm opacity-90">Venues report no dedicated compliance staff</div>
+                <div className="text-sm opacity-90">of venues report having no dedicated compliance staff</div>
               </div>
               <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl p-6 text-white text-center">
                 <div className="text-3xl font-bold mb-2">80%</div>
-                <div className="text-sm opacity-90">Rely on manual spreadsheets for governance</div>
+                <div className="text-sm opacity-90">of operators rely on manual forms or spreadsheets for governance</div>
               </div>
             </div>
           </SummaryView>
@@ -115,22 +115,22 @@ export default function Problem() {
                 <ul className="space-y-3 text-gray-600">
                   <li>Complex AML requirements with severe penalties for non-compliance</li>
                   <li>Evolving responsible gambling obligations</li>
-                  <li>Multiple state-based regulatory frameworks</li>
+                  <li>Myriad sources of obligations; onus on operator to find</li>
                   <li>Manual, paper-based processes prone to errors</li>
                 </ul>
               </div>
               <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Operational Inefficiencies</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Gaming Floor Operations Not Optimised</h3>
                 <ul className="space-y-3 text-gray-600">
-                  <li>Gaming machines operating below optimal performance</li>
-                  <li>Limited data insights for revenue optimisation</li>
-                  <li>Gaming floor decisions guided by gut instinct and simple heuristics</li>
+                  <li>Gaming machines revenue performance could be improved with data and insights</li>
+                  <li>Gaming floor decisions guided by gut instinct and overly simple heuristics</li>
+                  <li>Increasingly unsustainable in a competitive market share driven industry</li>
                 </ul>
               </div>
               <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Market Pressures</h3>
                 <ul className="space-y-3 text-gray-600">
-                  <li>Increasing scrutiny from regulators and community</li>
+                  <li>Increasing scrutiny from regulators; community expecations evolving</li>
                   <li>Need to balance profitability with safer gambling</li>
                   <li>Board oversight of risk & compliance maturing</li>
                   <li>Staff training and retention challenges</li>
@@ -143,13 +143,13 @@ export default function Problem() {
           <SummaryView>
             <div className="bg-gradient-to-r from-[#66899b] to-[#5a7a8a] rounded-2xl p-8 text-white">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">The Cost of Inaction</h2>
-                <p className="text-xl opacity-90">The financial impact on venues is substantial and growing</p>
+                <h2 className="text-3xl font-bold mb-4">The Ying and Yang of Operating Gaming Machines</h2>
+                <p className="text-xl opacity-90">Mounting compliance costs running into intensified competition for customers</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                   <div className="text-4xl font-bold mb-3">$50,000+</div>
-                  <div className="text-lg mb-2">Annual compliance costs per venue</div>
+                  <div className="text-lg mb-2">What a venue would spend annually on compliance activities</div>
                   <div className="text-sm opacity-80">Ineffectively spent on manual processes</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">

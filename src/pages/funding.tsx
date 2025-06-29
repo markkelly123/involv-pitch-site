@@ -411,7 +411,7 @@ export default function Funding() {
             <div className="bg-gradient-to-r from-[#66899b] to-[#5a7a8a] rounded-2xl p-8 text-white text-center">
               <h2 className="text-3xl font-bold mb-4">Join us in our mission to transform the Australian gaming industry?</h2>
               <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-                Join us in capturing the $400M+ opportunity to modernise Australia's gaming industry with the only integrated compliance and performance platform.
+                Becoming the largest player in the $400M+ opportunity to modernise Australia's gaming industry with the only integrated compliance and performance platform.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">

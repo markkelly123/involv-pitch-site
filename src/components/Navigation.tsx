@@ -105,7 +105,7 @@ const Navigation = () => {
                       : 'bg-transparent text-gray-600 hover:text-gray-800'
                   }`}
                 >
-                  INVESTOR VIEW
+                  INVESTOR PACK
                 </button>
                 <button
                   onClick={() => handleViewToggle('detailed')}
@@ -115,7 +115,7 @@ const Navigation = () => {
                       : 'bg-transparent text-gray-600 hover:text-gray-800'
                   }`}
                 >
-                  DETAILED CONTENT
+                  ADD&apos;L DETAIL
                 </button>
               </div>
             </div>

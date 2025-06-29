@@ -120,16 +120,16 @@ export default function Home() {
           <SummaryView>
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-white mb-2">3,750+</div>
+                <div className="text-sm text-gray-200">Licensed gaming venues</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-white mb-2">300%+</div>
-                <div className="text-sm text-gray-200">Increase in enforcement actions since 2021</div>
+                <div className="text-sm text-gray-200">Increase in regulatory enforcement actions since 2021</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-white mb-2">$1.5B+</div>
-                <div className="text-sm text-gray-200">Annual compliance & tech spend</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-white mb-2">3,750+</div>
-                <div className="text-sm text-gray-200">Licensed gaming venues</div>
+                <div className="text-sm text-gray-200">Annual compliance & gaming technology spend</div>
               </div>
             </div>
           </SummaryView>

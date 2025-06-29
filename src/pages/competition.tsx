@@ -137,7 +137,7 @@ export default function Competition() {
             <div className="bg-gradient-to-r from-[#66899b] to-[#5a7a8a] rounded-2xl p-8 mb-20 text-white text-center">
               <h2 className="text-3xl font-bold mb-4">Our "Co-opetition" Strategy</h2>
               <p className="text-xl opacity-90 max-w-4xl mx-auto">
-                Involv partners with selected competitors to create an unbeatable, end-to-end stack while still outperforming them in our core domains
+                Involv will partner with selected competitors to create sustainable competitive advantage. The whole is greater than the sum of its parts when one group delivers an end-to-end services and solution stack.
               </p>
             </div>
           </SummaryView>
@@ -174,11 +174,11 @@ export default function Competition() {
                           <div className="space-y-2">
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700">Integrates AusComply incidents into <strong>Assure</strong> for richer risk data</span>
+                              <span className="text-sm text-gray-700">Integrate AusComply incidents into <strong>Assure</strong> for richer and timely risk management data</span>
                             </div>
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700">Cross-referral agreement unlocks <strong>hundreds of venues</strong></span>
+                              <span className="text-sm text-gray-700">Cross-referral agreement unlocks <strong>hundreds of venues</strong> for Involv</span>
                             </div>
                           </div>
                         </td>
@@ -199,11 +199,11 @@ export default function Competition() {
                           <div className="space-y-2">
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700">JV to pipe granular EGM & transaction data into <strong>Sentinel</strong> and <strong>SafePlay</strong></span>
+                              <span className="text-sm text-gray-700">JV to pipe granular, real-time EGM transaction data into <strong>Sentinel</strong> and <strong>SafePlay</strong></span>
                             </div>
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700">Shared clients enable rapid scale</span>
+                              <span className="text-sm text-gray-700">Shared clients enable rapid scale. Technology already used by significant number of the largest clubs in NSW</span>
                             </div>
                           </div>
                         </td>
@@ -230,7 +230,7 @@ export default function Competition() {
                             </div>
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700"><strong>Assure</strong> offers gaming-ready obligation libraries and control templates</span>
+                              <span className="text-sm text-gray-700"><strong>Assure</strong> offers gaming-ready obligation libraries and control templates, and a single, tailored approach to risk managment</span>
                             </div>
                           </div>
                         </td>
@@ -245,18 +245,17 @@ export default function Competition() {
                           <div className="space-y-1">
                             <div className="font-medium text-gray-900">Tangam SODA</div>
                             <div className="font-medium text-gray-900">QCI</div>
-                            <div className="text-sm text-gray-600">Tony Toohey</div>
                           </div>
                         </td>
                         <td className="px-6 py-6">
                           <div className="space-y-2">
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700">Point-solutions with no compliance link</span>
+                              <span className="text-sm text-gray-700">Overly simplified, point-solutions with no compliance link; no safer gaming overlay</span>
                             </div>
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700"><strong>PrimeEdge</strong> couples AI optimisation with compliance analytics for unique 360° view</span>
+                              <span className="text-sm text-gray-700"><strong>PrimeEdge</strong> couples AI optimisation with performance analytics for 360° view</span>
                             </div>
                           </div>
                         </td>
@@ -270,7 +269,7 @@ export default function Competition() {
                         <td className="px-6 py-6">
                           <div className="space-y-1">
                             <div className="font-medium text-gray-900">Senet Legal</div>
-                            <div className="font-medium text-gray-900">Addisons Lawyers</div>
+                            <div className="font-medium text-gray-900">Addisons</div>
                             <div className="font-medium text-gray-900">KordaMentha</div>
                             <div className="font-medium text-gray-900">Kroll, PwC</div>
                           </div>
@@ -279,7 +278,7 @@ export default function Competition() {
                           <div className="space-y-2">
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                              <span className="text-sm text-gray-700">Big-ticket, law-first approach</span>
+                              <span className="text-sm text-gray-700">Big-ticket, law-first approach; high-priced consultants beyond the reach of the average operator</span>
                             </div>
                             <div className="flex items-start">
                               <span className="w-2 h-2 bg-[#66899b] rounded-full mt-2 mr-3 flex-shrink-0"></span>

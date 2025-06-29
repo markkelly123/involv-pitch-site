@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import Image from 'next/image'
 import PitchNavigation from '../components/PitchNavigation'
 import { SummaryView, DetailedView } from '../components/ViewSwitch'
 
@@ -26,7 +27,7 @@ export default function Traction() {
                 Strong Early Traction
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Proven product-market fit with rapid growth across advisory and software solutions
+                Proven product-market fit with rapid growth across consulting and advisory
               </p>
             </div>
           </SummaryView>
@@ -106,7 +107,7 @@ export default function Traction() {
               <div className="bg-gradient-to-r from-[#66899b] to-[#5a7a8a] rounded-xl p-8 text-white text-center">
                 <div className="text-4xl font-bold mb-3">14+</div>
                 <div className="text-lg font-medium mb-2">Current Clients</div>
-                <div className="text-sm opacity-90">Across all service lines</div>
+                <div className="text-sm opacity-90">All consulting and advisory</div>
               </div>
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-8 text-white text-center">
                 <div className="text-4xl font-bold mb-3">1</div>
@@ -132,7 +133,7 @@ export default function Traction() {
                           <span className="font-medium text-gray-900">AML Advisory</span>
                         </div>
                         <div className="text-sm">
-                          <span className="font-bold text-blue-600">5+ engagements</span>
+                          <span className="font-bold text-blue-600">5 engagements</span>
                           <span className="text-gray-600 ml-2">active</span>
                         </div>
                       </div>
@@ -143,7 +144,7 @@ export default function Traction() {
                           <span className="font-medium text-gray-900">Risk & Compliance</span>
                         </div>
                         <div className="text-sm">
-                          <span className="font-bold text-green-600">4+ projects</span>
+                          <span className="font-bold text-green-600">2 projects</span>
                           <span className="text-gray-600 ml-2">delivered</span>
                         </div>
                       </div>
@@ -154,7 +155,7 @@ export default function Traction() {
                           <span className="font-medium text-gray-900">Gaming Performance</span>
                         </div>
                         <div className="text-sm">
-                          <span className="font-bold text-purple-600">3+ venues</span>
+                          <span className="font-bold text-purple-600">80+ venues</span>
                           <span className="text-gray-600 ml-2">optimising</span>
                         </div>
                       </div>
@@ -180,7 +181,7 @@ export default function Traction() {
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Run Rate</span>
-                          <span className="font-medium text-gray-900">$3M+ annualised</span>
+                          <span className="font-medium text-gray-900">c. $2M annualised</span>
                         </div>
                       </div>
                     </div>
@@ -188,37 +189,51 @@ export default function Traction() {
                 </div>
               </div>
 
-              {/* Lane Consulting Expansion */}
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-8 border border-purple-200">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 ml-4">Lane Consulting Expansion</h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-gray-700 mb-4">
-                      Expanding proven AML methodology to Tranche-2 reporting entities across multiple sectors
-                    </p>
-                    <ul className="space-y-2 text-sm text-purple-700">
-                      <li>• 90,000+ potential target entities</li>
-                      <li>• Legal, accounting, real estate sectors</li>
-                      <li>• Sports integrity and payments/fintech</li>
-                      <li>• Proven methodology directly transferable</li>
-                    </ul>
-                  </div>
-                  <div className="bg-white/50 rounded-lg p-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-600 mb-1">90,000+</div>
-                      <div className="text-sm text-gray-600 mb-3">Target Entities</div>
-                      <div className="text-xs text-purple-700">Second revenue vertical with much larger addressable market</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+{/* Lane Consulting Expansion */}
+<div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-8 border border-purple-200">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+    {/* Left Column */}
+    <div>
+      <div className="flex items-center mb-6">
+        <div className="w-24 h-24 bg-white rounded-lg flex items-center justify-center p-2 shadow-sm">
+          <Image
+            src="/logo-lane.png"
+            alt="Lane Consulting"
+            width={64}
+            height={64}
+            className="w-16 h-16 object-contain"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 ml-4">Lane Consulting Expansion</h3>
+      </div>
+      
+      <p className="text-gray-700 mb-4">
+        Expanding proven AML methodology to Tranche-2 reporting entities across multiple sectors
+      </p>
+      <ul className="space-y-2 text-sm text-purple-700">
+        <li>• 90,000+ potential target entities</li>
+        <li>• Legal, accounting, real estate sectors</li>
+        <li>• Sports integrity and payments/fintech</li>
+        <li>• Proven methodology directly transferable</li>
+      </ul>
+    </div>
+    
+    {/* Right Column - starts at same level as logo/title */}
+    <div className="flex flex-col">
+      {/* Lane Homepage Screenshot - aligned with top of container */}
+      <div className="bg-white rounded-lg p-2 shadow-sm mb-3">
+        <Image
+          src="/lane-home.png"
+          alt="Lane Consulting Homepage"
+          width={400}
+          height={250}
+          className="w-full h-auto rounded object-cover"
+        />
+      </div>
+      
+    </div>
+  </div>
+</div>
             </div>
           </SummaryView>
 

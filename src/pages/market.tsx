@@ -314,7 +314,7 @@ export default function Market() {
           {/* Industry Recognition */}
           <SummaryView>
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Industry Partnerships & Recognition</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Industry Relationships</h2>
               <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
                 <Image
                   src="/assoc-logos.png"

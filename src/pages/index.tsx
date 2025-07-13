@@ -100,7 +100,7 @@ export default function Home() {
             {/* Sentinel */}
             <div className="flex flex-col items-center space-y-4">
               <Image src="/logo-sentinel-white.png" alt="Sentinel" width={160} height={60} className="h-12 w-auto" />
-              <p className="text-white text-sm font-medium">Real-time transaction monitoring.</p>
+              <p className="text-white text-sm font-medium">Intelligent transaction monitoring.</p>
             </div>
 
             {/* SafePlay */}
